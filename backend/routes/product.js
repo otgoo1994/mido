@@ -1,0 +1,31 @@
+const router = require('express').Router();
+const { catchErrors } = require('../handlers/errorHandler');
+const productController  = require('../controllers/productController');
+const auth = require('../middlewares/authall');
+
+router.post("/products", auth, catchErrors(productController.products));
+router.post("/add-cart", auth, catchErrors(productController.addCart));
+router.post("/product-detail", auth, catchErrors(productController.productDetail));
+router.post("/product-detail-customer", auth, catchErrors(productController.productDetailCustomer));
+router.post("/cart", auth, catchErrors(productController.getCart));
+router.post("/remove-cart", auth, catchErrors(productController.removeFromCart));
+router.post("/change-cart-qty", auth, catchErrors(productController.changeCartQty));
+router.post("/get-methods", auth, catchErrors(productController.getMethods));
+router.post("/add-product", auth, catchErrors(productController.addProduct));
+router.post("/add-brand", auth, catchErrors(productController.addBrand));
+router.post("/add-category", auth, catchErrors(productController.addCategory));
+router.post("/add-sub-category", auth, catchErrors(productController.addSubCategory));
+router.post("/delete-product", auth, catchErrors(productController.deleteProduct));
+router.post("/get-new-products", auth, catchErrors(productController.getNewProducts));
+router.post("/get-recommended-products", auth, catchErrors(productController.getRecommendedProduct));
+router.post("/update-shops", auth, catchErrors(productController.updateShops));
+router.post("/update-product-quanity", auth, catchErrors(productController.updateProductQuantity));
+router.post("/add-customer-product", auth, catchErrors(productController.addProductCustomer));
+router.post("/edit-product", auth, catchErrors(productController.editProduct));
+router.post("/transper-sub-category", auth, catchErrors(productController.transperSubCategory));
+router.post("/transper-sub-category-product", auth, catchErrors(productController.transferSubCategoryProduct));
+router.post("/get-all-product", auth, catchErrors(productController.getAllProduct));
+router.post("/end-reciept", auth, catchErrors(productController.EndReciept));
+router.post("/add-from-sheet", auth, catchErrors(productController.addFromExcel));
+
+module.exports = router;
